@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const todoForm = document.getElementById("todo-form");
   const todoInput = document.getElementById("todo-input");
@@ -7,9 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const todoList = document.getElementById("todo-list");
   const filterStatus = document.getElementById("filter-status");
 
-  let todos = []; // Array untuk menyimpan semua objek To-Do
+  let todos = []; 
 
-  // 1. Fungsi untuk Memuat dan Menyimpan Data
   const loadTodos = () => {
     const storedTodos = localStorage.getItem("todos");
     if (storedTodos) {
@@ -22,9 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("todos", JSON.stringify(todos));
   };
 
-  // 2. Fungsi untuk Render (Menampilkan) Daftar To-Do
   const renderTodos = () => {
-    todoList.innerHTML = ""; // Kosongkan daftar saat ini
+    todoList.innerHTML = ""; 
     const selectedFilter = filterStatus.value;
 
     // Terapkan filter
@@ -57,10 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // 3. Fungsi untuk Menambah To-Do (Add)
   const addTodo = (text, date) => {
     const newTodo = {
-      id: Date.now(), // ID unik
+      id: Date.now(), 
       text: text,
       date: date,
       completed: false,
@@ -70,14 +65,12 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTodos();
   };
 
-  // 4. Handler Submit Form (Termasuk Validasi Input)
   todoForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const text = todoInput.value.trim();
     const date = dateInput.value;
 
-    // Validasi Input Form (2. Validate Input Form)
     if (text === "") {
       alert("Tugas tidak boleh kosong!");
       return;
@@ -89,11 +82,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     addTodo(text, date);
-    todoInput.value = ""; // Reset input
-    dateInput.value = ""; // Reset input tanggal
+    todoInput.value = ""; 
+    dateInput.value = "";
   });
 
-  // 5. Fungsi untuk Menghapus dan Menandai Selesai (Delete dan Update Status)
   todoList.addEventListener("click", (e) => {
     const item = e.target.closest(".todo-item");
     if (!item) return;
@@ -112,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Menandai Selesai (Toggle Status)
     if (e.target.classList.contains("complete-btn")) {
       todos[todoIndex].completed = !todos[todoIndex].completed;
       saveTodos();
@@ -120,9 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 6. Handler Filter (Filter)
   filterStatus.addEventListener("change", renderTodos);
 
-  // Muat data saat aplikasi pertama kali dimuat
   loadTodos();
 });
+
