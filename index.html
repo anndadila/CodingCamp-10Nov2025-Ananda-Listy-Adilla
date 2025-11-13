@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List Sederhana</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🗓 Daftar Tugas Harian</h1>
+
+      <form id="todo-form">
+        <input
+          type="text"
+          id="todo-input"
+          placeholder="Apa yang harus dilakukan?"
+          required
+        />
+        <input type="date" id="date-input" required />
+        <button type="submit" id="add-button">Tambah Tugas</button>
+      </form>
+
+      <div class="filter-controls">
+        <label for="filter-status">Filter Status:</label>
+        <select id="filter-status">
+          <option value="all">Semua</option>
+          <option value="pending">Menunggu</option>
+          <option value="completed">Selesai</option>
+        </select>
+      </div>
+
+      <ul id="todo-list"></ul>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
